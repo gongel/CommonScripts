@@ -1,0 +1,17 @@
+#!/bin/bash
+# run: bash helper
+for i in $(seq 1 96)
+do
+        let front=i*22-22
+        if [ $front -gt 2047 ]
+        then
+                break
+        fi
+        let back=i*22-1
+        if [ $back -gt 2047 ]
+        then
+                let back=2047
+        fi
+        nohup bash create_pretraining_data_512_script $front $back &
+        echo $front $back
+done
