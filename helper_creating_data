@@ -1,6 +1,6 @@
 #!/bin/bash
-# run: bash helper
-for i in $(seq 1 96)
+# helper for creating data.
+for i in $(seq 1 96) # 96 cores
 do
         let front=i*22-22
         if [ $front -gt 2047 ]
@@ -12,6 +12,6 @@ do
         then
                 let back=2047
         fi
-        nohup bash create_pretraining_data_512_script $front $back &
-        echo $front $back
+        nohup bash create_pretraining_data_512_script $front $back >$front_$back 2>&1 &
+        echo "$front-$back is running"
 done
