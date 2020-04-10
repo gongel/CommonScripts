@@ -12,6 +12,6 @@ do
         then
                 let back=2047
         fi
-        nohup bash create_pretraining_data_512_script $front $back >$front_$back 2>&1 &
+        nohup bash create_pretraining_data_512_script $front $back >$front-$back.out 2>&1 &
         echo "$front-$back is running"
 done
